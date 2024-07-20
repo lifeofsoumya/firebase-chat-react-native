@@ -6,6 +6,7 @@ import { Octicons, Feather } from '@expo/vector-icons';
 import { useRouter } from "expo-router"
 import Loader from '../components/Loader';
 import CustomKeyboardView from '../components/CustomKeyboardView';
+import { useAuth } from '../context/authContext';
 
 export default function Signup() {
     const [loading, setLoading] = useState(false);
@@ -13,10 +14,16 @@ export default function Signup() {
     const usernameRef = useRef(null)
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const { register } = useAuth();
 
     const handleRegister = async()=> {
         if(!emailRef.current || !passwordRef.current || !usernameRef.current) return Alert.alert('Unable to proceed', 'Please fill all the fields')
         setLoading(true);
+        let response = await register(emailRef.current, passwordRef.current, usernameRef.current)
+        setLoading(false);
+        console.log(response, ' response from inside handleRegister')
+
+        if(!response.success) Alert.alert("Signup failed", response.message)
     }
 
   return (

@@ -6,9 +6,12 @@ import { Octicons, Feather } from '@expo/vector-icons';
 import { useRouter } from "expo-router"
 import Loader from '../components/Loader';
 import CustomKeyboardView from '../components/CustomKeyboardView';
+import { useAuth } from '../context/authContext';
+import { auth } from '../firebaseConfig';
 
 export default function Signin() {
     const [loading, setLoading] = useState(false);
+    const { login } = useAuth(auth);
     const router = useRouter();
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -16,6 +19,9 @@ export default function Signin() {
     const handleLogin = async()=> {
         if(!emailRef.current || !passwordRef.current) return Alert.alert('Unable to proceed', 'Please fill all the fields')
         setLoading(true);
+        const res = await login(emailRef.current, passwordRef.current);
+        setLoading(false);
+        if(!res.success) Alert.alert("Sign in Failed", res.message);
     }
 
   return (
