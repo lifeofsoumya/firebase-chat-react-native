@@ -3,23 +3,20 @@ import { initializeAuth } from 'firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getFirestore, collection } from 'firebase/firestore';
 import Config from "react-native-config";
+import { getReactNativePersistence } from "@firebase/auth/dist/rn/index.js";
+import { localFirebaseConfig } from "./constants/localConfig";
 // const {EXPO_API_KEY, EXPO_AUTH_DOMAIN, EXPO_PROJECT_ID, EXPO_STORAGE_BUCKET, EXPO_MESSAGING_SENDER_ID, EXPO_APP_ID } = Config
 
-const firebaseConfig = {
-    apiKey: Config.EXPO_API_KEY,
-    authDomain: Config.EXPO_AUTH_DOMAIN,
-    projectId: Config.EXPO_PROJECT_ID,
-    storageBucket: Config.EXPO_STORAGE_BUCKET,
-    messagingSenderId: Config.EXPO_MESSAGING_SENDER_ID,
-    appId: Config.EXPO_APP_ID,
-};
-
+const firebaseConfig = localFirebaseConfig // find the same in https://console.firebase.google.com/u/0/project
+  
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-export const auth = initializeAuth(app)
+export const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage)
+});
 
 export const db = getFirestore(app);
 
-export const userRef = collection(app, 'users')
-export const roomRef = collection(app, 'rooms')
+export const usersRef = collection(db, 'users');
+export const roomRef = collection(db, 'rooms');
 
