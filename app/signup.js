@@ -29,7 +29,7 @@ export default function Signup() {
   return (
     <CustomKeyboardView>
         <StatusBar style='dark' />
-        <View className="flex-1 gap-10" style={{paddingTop: hp(6), paddingHorizontal: hp(4)}}>
+        <View className="flex-1 gap-10 mt-16" style={{paddingTop: hp(6), paddingHorizontal: hp(4)}}>
             <View className="items-center">
                 <Image source={require('../assets/images/story_char.png')} style={{height: hp(25), width: wp(70) }} />
             </View>
