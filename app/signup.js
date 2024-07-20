@@ -24,7 +24,7 @@ export default function Signup() {
         <StatusBar style='dark' />
         <View className="flex-1 gap-10" style={{paddingTop: hp(6), paddingHorizontal: hp(4)}}>
             <View className="items-center">
-                <Image source={require('../assets/images/signin_image.png')} style={{height: hp(25), width: wp(70) }} />
+                <Image source={require('../assets/images/story_char.png')} style={{height: hp(25), width: wp(70) }} />
             </View>
             <View className="flex-1 gap-4">
                 {/* <Text className="text-center font-bold text-indigo-400 pb-4" style={{fontSize: hp(2)}}>Sign in</Text> */}

@@ -20,7 +20,7 @@ const MainLayout = () => {
 
     return (<View className="flex-1">
             <View className="bg-indigo-500 pt-16 pb-4 px-4 flex flex-row justify-between">
-                <Text className="text-xl text-white font-bold">OCode.dev</Text>
+                <Text className="text-xl text-white font-bold">OCode.dev</Text> 
                 <TouchableOpacity onPress={()=> router.replace('signin')}>
                     <MaterialIcons name="account-circle" size={24} color="white" />
                 </TouchableOpacity>
