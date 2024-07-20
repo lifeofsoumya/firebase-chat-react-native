@@ -43,3 +43,6 @@ expo-env.d.ts
 
 # local configs
 constants/localConfig.js
+
+# ios build kept to gitignore
+/ios/*
