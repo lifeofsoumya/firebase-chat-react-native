@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons';
-import { getRoomId } from '../utils/common';
+import { formatDate, getRoomId } from '../utils/common';
 import { collection, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
@@ -57,7 +57,10 @@ const ChatItem = ({item, noBorder, router, currentUser}) => {
     }
   }
   function renderLastMsgTime(){
-    return '8:00'
+    if (lastMessage && lastMessage.createdAt) {
+      return formatDate(lastMessage.createdAt);
+    }
+    return '';
   }
   return (
     <TouchableOpacity
