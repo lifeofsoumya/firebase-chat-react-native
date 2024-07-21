@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "firebase_chat_react_native",
-    "slug": "firebase_chat_react_native",
+    "slug": "ocode",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -35,6 +35,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "52644e7b-d51b-4f38-989c-bae053fdb7a1"
+      }
+    },
+    "owner": "indgeek"
   }
 }
