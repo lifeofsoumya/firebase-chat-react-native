@@ -34,7 +34,7 @@ export default function Home() {
       <StatusBar style='light' />
       {
         users.length > 0 ? (
-            <ChatList users={users}/>
+            <ChatList users={users} currentUser={user}/>
         ) : (
           <View className="flex-1 items-center" style={{top: hp(30)}}>
             <Loader size={hp(10)} />
